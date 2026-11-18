@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nakkada Mission Hospital – Patient Records</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f8fc;--card:#fff;--line:#e9eef6;--tx:#0f172a;--mu:#64748b;--pr:#2563eb;--pr2:#eaf1ff;--gr:#16a34a;--gr2:#e8f8ee;--or:#ea8a0c;--or2:#fff3e0;--rd:#e5484d;--rd2:#fdecec;--sh:0 1px 2px rgba(30,58,138,.04),0 8px 24px rgba(30,58,138,.05);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root[data-theme="dark-off"]{--bg:#0b1220;--card:#111a2c;--line:#1f2b42;--tx:#e8eefc;--mu:#93a1bb;--pr:#5b8cff;--pr2:#15264d;--gr2:#10301f;--or2:#37270d;--rd2:#3a1618;--sh:none}}
+:root[data-theme="dark"]{--bg:#0b1220;--card:#111a2c;--line:#1f2b42;--tx:#e8eefc;--mu:#93a1bb;--pr:#5b8cff;--pr2:#15264d;--gr2:#10301f;--or2:#37270d;--rd2:#3a1618;--sh:none}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:#fff;color-scheme:light;color:var(--tx);font:14px/1.45 Inter,system-ui,-apple-system,"Segoe UI",sans-serif}
+button{font:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--pr);outline-offset:2px}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--card);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:28px;padding:0 24px;height:60px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.06em;font-size:17px;white-space:nowrap}
+.logo i{width:30px;height:30px;border-radius:9px;background:var(--pr);display:grid;place-items:center;color:#fff;font-style:normal;font-size:20px;line-height:1}
+.logo small{display:block;font-size:9.5px;font-weight:500;letter-spacing:.02em;color:var(--mu)}
+.tabs{display:flex;gap:26px;height:100%}
+.tabs a{display:flex;align-items:center;color:var(--tx);text-decoration:none;font-size:12.5px;font-weight:500;border-bottom:2px solid transparent}
+.tabs a.on{color:var(--pr);border-color:var(--pr)}
+.sp{flex:1}
+.search{display:flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:10px;padding:8px 12px;color:var(--mu);font-size:12px;width:230px;background:var(--card)}
+.search input{border:0;outline:0;background:none;font:inherit;color:var(--tx);width:100%}
+.ib{width:34px;height:34px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--mu);display:grid;place-items:center;position:relative}
+.ib b{position:absolute;top:-2px;right:-2px;background:var(--rd);color:#fff;font-size:9px;border-radius:9px;padding:0 4px}
+.me{display:flex;align-items:center;gap:10px;font-size:12px;font-weight:600;line-height:1.2}.me small{font-weight:400;color:var(--mu);display:block}
+.av{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#7aa7ff,#2563eb);color:#fff;display:grid;place-items:center;font-weight:700;font-size:12px;flex:none}
+.av.s{width:30px;height:30px;font-size:11px}
+.shell{display:grid;grid-template-columns:230px 1fr;min-height:calc(100vh - 60px)}
+.side{background:var(--card);border-right:1px solid var(--line);padding:18px 14px;display:flex;flex-direction:column;gap:3px}
+.side h6{margin:14px 10px 4px;font-size:10.5px;font-weight:600;color:var(--mu);letter-spacing:.04em}
+.side a{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:10px;color:var(--tx);text-decoration:none;font-size:13px;font-weight:500}
+.side a svg{width:17px;height:17px;stroke:var(--mu);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.side a.on{background:var(--pr2);color:var(--pr)}.side a.on svg{stroke:var(--pr)}
+.side a em{margin-left:auto;font-style:normal;font-size:10.5px;background:var(--pr2);color:var(--pr);border-radius:8px;padding:1px 7px;font-weight:600}
+.prot{margin-top:auto;border:1px solid var(--line);border-radius:12px;padding:14px;font-size:11px;color:var(--mu)}
+.prot b{display:block;color:var(--tx);font-size:12px;margin:6px 0 2px}
+.prot button{margin-top:10px;border:1px solid var(--pr);background:none;color:var(--pr);border-radius:7px;padding:5px 10px;font-size:11px;font-weight:600}
+main{padding:22px 26px 30px;min-width:0}
+.hero{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;margin-bottom:18px;position:relative}
+.hero p{margin:0;color:var(--mu)}
+.hero h1{margin:4px 0 6px;font-size:34px;letter-spacing:-.02em;font-weight:800}
+.hero .g{font-size:14px;font-weight:600;color:var(--tx);margin-bottom:0}
+.sec{display:inline-flex;align-items:center;gap:6px;font-size:11px;color:var(--gr);font-weight:500}.sec:before{content:"";width:8px;height:8px;border-radius:50%;background:var(--gr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--sh);padding:18px}
+.ct{font-size:11.5px;font-weight:700;letter-spacing:.05em;margin:0 0 14px;display:flex;justify-content:space-between;align-items:center}
+.ct a{font-size:10.5px;font-weight:500;color:var(--pr);text-decoration:none;letter-spacing:0}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:16px}
+.stat{position:relative;overflow:hidden;min-height:128px}
+.ico{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;background:var(--pr2);color:var(--pr)}
+.ico svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.ico.g{background:var(--gr2);color:var(--gr)}.ico.o{background:var(--or2);color:var(--or)}.ico.r{background:var(--rd2);color:var(--rd)}
+.stat .n{font-size:26px;font-weight:700;margin-top:14px;letter-spacing:-.01em}.stat .l{font-size:12px;color:var(--mu)}
+.stat .d{position:absolute;top:18px;right:18px;font-size:11px;font-weight:600;color:var(--gr)}.stat .d.dn{color:var(--rd)}
+.stat svg.sp2{position:absolute;right:14px;bottom:14px;width:46%;height:42px}
+.qa{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-bottom:16px}
+.qa button{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;text-align:left;color:var(--tx);box-shadow:var(--sh);display:flex;flex-direction:column;gap:10px;font-size:12.5px;font-weight:600}
+.qa button small{display:block;font-weight:400;color:var(--mu);font-size:11px;margin-top:1px}
+.qa button:hover{border-color:var(--pr)}
+.pills{display:flex;gap:8px;flex-wrap:wrap}
+.pill{border:0;border-radius:20px;padding:6px 16px;font-size:11px;font-weight:500;background:var(--pr2);color:var(--pr)}
+.pill.on{background:var(--pr);color:#fff}
+.dirbar{display:flex;gap:16px;align-items:center;margin-bottom:12px;flex-wrap:wrap}
+.dirbar .search{flex:1;min-width:200px;width:auto}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:12px}
+table{border-collapse:collapse;width:100%;min-width:760px}
+th{font-size:10px;letter-spacing:.05em;color:var(--mu);font-weight:600;text-align:left;padding:11px 14px;background:var(--bg)}
+td{padding:11px 14px;border-top:1px solid var(--line);font-size:12px}
+tbody tr{cursor:pointer}tbody tr:hover,tbody tr.on{background:var(--pr2)}
+.pt{display:flex;align-items:center;gap:10px;font-weight:600}
+.st{display:inline-flex;align-items:center;gap:5px;border-radius:12px;padding:2px 9px;font-size:10.5px;font-weight:600}
+.st:before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
+.st.a{background:var(--gr2);color:var(--gr)}.st.f{background:var(--or2);color:var(--or)}.st.c{background:var(--rd2);color:var(--rd)}.st.n{background:var(--pr2);color:var(--pr)}
+.grid3{display:grid;grid-template-columns:1.35fr 1.1fr 1fr;gap:16px;margin-top:16px;align-items:start}
+.phead{display:flex;gap:16px;align-items:center;margin-bottom:14px}
+.phead .av{width:68px;height:68px;font-size:22px}
+.phead h2{margin:0;font-size:20px;display:inline-block;margin-right:8px}
+.meta{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;font-size:11px;color:var(--mu);margin-bottom:14px}.meta b{display:block;color:var(--tx);font-size:13px;margin-top:1px}
+.ptabs{display:flex;gap:22px;border-bottom:1px solid var(--line);margin-bottom:14px;overflow-x:auto}
+.ptabs button{background:none;border:0;padding:8px 0;font-size:11.5px;color:var(--mu);border-bottom:2px solid transparent;white-space:nowrap}
+.ptabs button.on{color:var(--pr);border-color:var(--pr);font-weight:600}
+.vit{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:16px}
+.vit div,.kv div{background:var(--bg);border-radius:10px;padding:10px 12px;font-size:11px;color:var(--mu)}
+.vit b{display:block;font-size:19px;color:var(--tx);margin-top:2px}
+.kv{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}.kv b{display:block;color:var(--tx);font-size:12.5px;font-weight:600}
+.tl{position:relative;padding-left:30px;margin:0;list-style:none}
+.tl:before{content:"";position:absolute;left:11px;top:6px;bottom:6px;width:1px;background:var(--line)}
+.tl li{position:relative;margin-bottom:14px;font-size:12px}
+.tl li i{position:absolute;left:-30px;top:0;width:22px;height:22px;border-radius:50%;background:var(--pr2);border:1px solid var(--pr);display:block}
+.tl small{color:var(--mu);display:block;font-size:10.5px}
+.rec{display:flex;align-items:center;gap:12px;border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin-bottom:10px}
+.rec .ico{width:34px;height:34px}.rec div{flex:1;font-size:12px;font-weight:600}.rec small{display:block;color:var(--mu);font-weight:400;font-size:10.5px}
+.rec button{border:1px solid var(--line);background:var(--bg);border-radius:7px;font-size:10.5px;padding:4px 12px;color:var(--pr);font-weight:600}
+.prog{display:flex;flex-direction:column;gap:9px}
+.prog div{display:flex;align-items:center;gap:10px;font-size:12px}
+.prog i{width:18px;height:18px;border-radius:50%;border:1.5px solid var(--line);display:grid;place-items:center;font-size:10px;font-style:normal;flex:none}
+.prog .d i{background:var(--gr);border-color:var(--gr);color:#fff}.prog .p i{border-color:var(--pr);background:var(--pr2)}
+.prog span{margin-left:auto;font-size:10.5px;color:var(--mu)}
+.beds{display:grid;grid-template-columns:repeat(6,1fr);gap:7px;margin:10px 0 12px}
+.bed{aspect-ratio:1.25;border-radius:8px;font-size:10px;font-weight:600;display:grid;place-items:center;border:1px solid transparent;cursor:pointer}
+.bed.o{background:var(--pr2);color:var(--pr)}.bed.v{background:var(--gr2);color:var(--gr)}.bed.r{background:var(--or2);color:var(--or)}.bed.x{background:var(--rd2);color:var(--rd)}
+.bed:hover{border-color:currentColor}
+.leg{display:flex;gap:12px;flex-wrap:wrap;font-size:10.5px;color:var(--mu)}.leg i{display:inline-block;width:9px;height:9px;border-radius:3px;margin-right:4px}
+.wb{margin-bottom:11px;font-size:11.5px}.wb div{display:flex;justify-content:space-between;margin-bottom:4px}
+.wb u{display:block;height:6px;border-radius:4px;background:var(--pr2);text-decoration:none;overflow:hidden}.wb u i{display:block;height:100%;background:var(--pr);border-radius:4px}
+.act{display:flex;gap:12px;align-items:center;padding:9px 0;border-top:1px solid var(--line);font-size:12px}.act:first-of-type{border-top:0}
+.act i{width:16px;height:16px;border-radius:50%;border:1.5px solid var(--line);flex:none}.act small{display:block;color:var(--mu);font-size:10.5px}.act div{flex:1}
+.tag{font-size:10px;font-weight:600;border-radius:10px;padding:2px 10px}.tag.h{background:var(--rd2);color:var(--rd)}.tag.m{background:var(--or2);color:var(--or)}.tag.l{background:var(--gr2);color:var(--gr)}
+.ap{display:flex;gap:14px;border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin-bottom:10px;align-items:center;font-size:12px}
+.ap .dt{width:48px;text-align:center;background:var(--pr2);color:var(--pr);border-radius:9px;padding:5px 0;font-size:10px;font-weight:600}.dt b{display:block;font-size:18px;line-height:1.1}.ap small{display:block;color:var(--mu);font-size:11px}
+.btn{width:100%;border:1px solid var(--pr);background:none;color:var(--pr);border-radius:9px;padding:9px;font-size:11px;font-weight:600;letter-spacing:.04em}
+.row2{display:grid;grid-template-columns:1fr 1.6fr;gap:16px;margin-top:16px}
+.perf{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.perf div{border:1px solid var(--line);border-radius:12px;padding:14px;font-size:12px;color:var(--mu)}.perf b{display:block;font-size:22px;color:var(--tx);margin:8px 0 2px}.perf em{font-style:normal;font-size:11px;color:var(--gr);font-weight:600}.perf em.dn{color:var(--rd)}
+.bars{display:flex;align-items:flex-end;gap:14px;height:150px;padding-top:10px;border-bottom:1px solid var(--line)}
+.bars>div{flex:1;display:flex;align-items:flex-end;gap:3px;height:100%}.bars i{flex:1;border-radius:3px 3px 0 0;background:var(--pr)}.bars i:nth-child(2){background:#22c3b0}.bars i:nth-child(3){background:#a78bfa}
+.bl{display:flex;gap:14px;font-size:10.5px;color:var(--mu);margin-top:6px}.bl span{flex:1;text-align:center}
+.pb{margin-top:16px;background:var(--pr2);border-radius:14px;padding:18px;display:flex;gap:14px;align-items:center}
+.pb .ico{background:var(--pr);color:#fff;width:46px;height:46px;border-radius:50%}.pb b{font-size:14px;letter-spacing:.02em}.pb small{display:block;color:var(--mu);font-size:10.5px}
+footer{margin-top:22px;padding-top:16px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:11px;color:var(--mu)}
+footer nav{display:flex;gap:26px}
+@media(max-width:1180px){.grid3{grid-template-columns:1fr 1fr}.grid3>:first-child{grid-column:1/-1}.qa{grid-template-columns:repeat(3,1fr)}.stats{grid-template-columns:1fr 1fr}}
+@media(max-width:860px){.shell{grid-template-columns:1fr}.side{display:none}.tabs,.search.t{display:none}.me span{display:none}.grid3,.row2{grid-template-columns:1fr}.top{gap:12px;padding:0 14px}main{padding:16px 14px}.hero h1{font-size:26px}}
+@media(max-width:520px){.stats{grid-template-columns:1fr}.qa{grid-template-columns:1fr 1fr}.meta{grid-template-columns:1fr 1fr}}
+
+body{background:linear-gradient(180deg,#edf3fc,#f7faff 60%,#fff)}
+.top{border-bottom:0;box-shadow:0 1px 0 #e6edf8;gap:18px}
+.search.t{width:290px;margin-left:30px;border-radius:12px}
+.pill2{background:#e8f8ee;border-radius:20px;padding:6px 14px;font-weight:600}
+.side{background:#eef4fd;border-right:0;padding-top:22px}
+.side a{padding:11px 14px;border-radius:12px}
+.side a.on{background:#dce8fd}
+.prot{background:#fff;border:0}
+.hero{display:block;border-radius:18px;overflow:hidden;min-height:180px;padding:26px 30px;margin-bottom:18px;background:linear-gradient(90deg,#fff 38%,rgba(255,255,255,.85) 52%,rgba(255,255,255,0) 72%),url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAwIDQwNSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ieE1pZFlNaWQgc2xpY2UiPgo8ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjZjRmOGZlIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjZGNlOGY4Ii8+PC9saW5lYXJHcmFkaWVudD4KPGxpbmVhckdyYWRpZW50IGlkPSJjb2F0IiB4MT0iMCIgeTE9IjAiIHgyPSIwIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjZmZmZmZmIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjZThlZmY5Ii8+PC9saW5lYXJHcmFkaWVudD4KPGxpbmVhckdyYWRpZW50IGlkPSJza2luIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjZjZkNGI4Ii8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjZTliOTk2Ii8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+CjxyZWN0IHdpZHRoPSIxMjAwIiBoZWlnaHQ9IjQwNSIgZmlsbD0idXJsKCNiZykiLz4KPGcgZmlsbD0iI2ZmZiIgb3BhY2l0eT0iLjciPjxyZWN0IHg9Ijc2MCIgeT0iMzAiIHdpZHRoPSIxNTAiIGhlaWdodD0iMTkwIiByeD0iOCIvPjxyZWN0IHg9IjkzMCIgeT0iMzAiIHdpZHRoPSIxNTAiIGhlaWdodD0iMTkwIiByeD0iOCIvPjwvZz4KPGcgZmlsbD0iI2NmZTBmNiIgb3BhY2l0eT0iLjgiPjxyZWN0IHg9Ijc2MCIgeT0iMTIyIiB3aWR0aD0iMzIwIiBoZWlnaHQ9IjYiLz48cmVjdCB4PSI5MTEiIHk9IjMwIiB3aWR0aD0iNiIgaGVpZ2h0PSIxOTAiLz48L2c+CjxyZWN0IHg9IjAiIHk9IjM3MiIgd2lkdGg9IjEyMDAiIGhlaWdodD0iMzMiIGZpbGw9IiNjYmRiZjEiLz4KPGc+PHJlY3QgeD0iMTAxMCIgeT0iMzE4IiB3aWR0aD0iODYiIGhlaWdodD0iODciIHJ4PSIxMCIgZmlsbD0iI2YxZjVmYSIgc3Ryb2tlPSIjZDNkZWVlIiBzdHJva2Utd2lkdGg9IjIiLz4KPGcgZmlsbD0iIzIyYTM1YSI+PGVsbGlwc2UgY3g9IjEwNTMiIGN5PSIyNTAiIHJ4PSIxNiIgcnk9IjYyIi8+PGVsbGlwc2UgY3g9IjEwMjAiIGN5PSIyNzAiIHJ4PSIxNCIgcnk9IjUyIiB0cmFuc2Zvcm09InJvdGF0ZSgtMzUgMTAyMCAyNzApIi8+PGVsbGlwc2UgY3g9IjEwODYiIGN5PSIyNzAiIHJ4PSIxNCIgcnk9IjUyIiB0cmFuc2Zvcm09InJvdGF0ZSgzNSAxMDg2IDI3MCkiLz48L2c+CjxnIGZpbGw9IiMxNjg2NGEiPjxlbGxpcHNlIGN4PSIxMDM2IiBjeT0iMjkwIiByeD0iOSIgcnk9IjM2IiB0cmFuc2Zvcm09InJvdGF0ZSgtMTggMTAzNiAyOTApIi8+PGVsbGlwc2UgY3g9IjEwNzAiIGN5PSIyOTAiIHJ4PSI5IiByeT0iMzYiIHRyYW5zZm9ybT0icm90YXRlKDE4IDEwNzAgMjkwKSIvPjwvZz48L2c+CjxlbGxpcHNlIGN4PSI2MTAiIGN5PSI0MDAiIHJ4PSIyNTAiIHJ5PSIxMCIgZmlsbD0iIzlkYjZkOCIgb3BhY2l0eT0iLjM1Ii8+CjxwYXRoIGQ9Ik0zNTAgNDA1QzM1OCAzMzAgNDMwIDI3OCA1MjAgMjU2TDcwMCAyNTZDNzkwIDI3OCA4NjIgMzMwIDg3MCA0MDVaIiBmaWxsPSJ1cmwoI2NvYXQpIiBzdHJva2U9IiNkM2UwZjIiIHN0cm9rZS13aWR0aD0iMyIvPgo8cmVjdCB4PSI1NzIiIHk9IjIxNCIgd2lkdGg9Ijc2IiBoZWlnaHQ9IjU4IiByeD0iMjIiIGZpbGw9IiNlOWI5OTYiLz4KPHBhdGggZD0iTTU0NSAyNTZMNjEwIDM1OEw2NzUgMjU2WiIgZmlsbD0iIzI1NjNlYiIvPgo8cGF0aCBkPSJNNTIwIDI1Nkw1ODAgMjY4TDU1MiAzNTBMNDg4IDMwNloiIGZpbGw9IiNmN2ZhZmYiIHN0cm9rZT0iI2QzZTBmMiIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+CjxwYXRoIGQ9Ik03MDAgMjU2TDY0MCAyNjhMNjY4IDM1MEw3MzIgMzA2WiIgZmlsbD0iI2Y3ZmFmZiIgc3Ryb2tlPSIjZDNlMGYyIiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPHBhdGggZD0iTTU1NiAyNTJDNTQwIDMzMCA1NjYgMzc2IDYxMCAzODBDNjU0IDM3NiA2ODAgMzMwIDY2NCAyNTIiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzFmMjkzNyIgc3Ryb2tlLXdpZHRoPSI4IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPGNpcmNsZSBjeD0iNjEwIiBjeT0iMzg0IiByPSIxNyIgZmlsbD0iI2NiZDVlMSIgc3Ryb2tlPSIjMWYyOTM3IiBzdHJva2Utd2lkdGg9IjYiLz4KPHJlY3QgeD0iNzE4IiB5PSIzMTIiIHdpZHRoPSI2NCIgaGVpZ2h0PSIzNCIgcng9IjUiIGZpbGw9IiNmZmYiIHN0cm9rZT0iI2JjZDBlYyIgc3Ryb2tlLXdpZHRoPSIyIi8+PHJlY3QgeD0iNzI2IiB5PSIzMjAiIHdpZHRoPSIyMiIgaGVpZ2h0PSI2IiByeD0iMyIgZmlsbD0iIzI1NjNlYiIvPjxyZWN0IHg9IjcyNiIgeT0iMzMxIiB3aWR0aD0iNDYiIGhlaWdodD0iNSIgcng9IjIuNSIgZmlsbD0iI2NiZDVlMSIvPgo8ZWxsaXBzZSBjeD0iNTQ2IiBjeT0iMTcyIiByeD0iMTAiIHJ5PSIxOCIgZmlsbD0iI2U5Yjk5NiIvPjxlbGxpcHNlIGN4PSI2NzQiIGN5PSIxNzIiIHJ4PSIxMCIgcnk9IjE4IiBmaWxsPSIjZTliOTk2Ii8+CjxlbGxpcHNlIGN4PSI2MTAiIGN5PSIxNjgiIHJ4PSI2NCIgcnk9Ijc2IiBmaWxsPSJ1cmwoI3NraW4pIi8+CjxjaXJjbGUgY3g9IjY5MCIgY3k9Ijk2IiByPSIzMCIgZmlsbD0iIzNiMmEyMiIvPgo8cGF0aCBkPSJNNTQ0IDE2OEM1MzYgOTIgNTc4IDcwIDYxNiA3MkM2NjggNzQgNjgyIDExOCA2NzQgMTY2QzY2NCAxMzIgNjQyIDExMiA2MTIgMTEwQzU4MCAxMTIgNTU2IDEzMCA1NDQgMTY4WiIgZmlsbD0iIzNiMmEyMiIvPgo8ZyBzdHJva2U9IiMzYjJhMjIiIHN0cm9rZS13aWR0aD0iNCIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIj48cGF0aCBkPSJNNTc2IDE1MHExNC04IDI4IDAiLz48cGF0aCBkPSJNNjIwIDE1MHExNC04IDI4IDAiLz48L2c+CjxnIGZpbGw9IiMyYjFkMTciPjxlbGxpcHNlIGN4PSI1OTAiIGN5PSIxNzAiIHJ4PSI2IiByeT0iNy41Ii8+PGVsbGlwc2UgY3g9IjYzNCIgY3k9IjE3MCIgcng9IjYiIHJ5PSI3LjUiLz48L2c+CjxnIGZpbGw9IiNmZmYiPjxjaXJjbGUgY3g9IjU5MiIgY3k9IjE2NyIgcj0iMiIvPjxjaXJjbGUgY3g9IjYzNiIgY3k9IjE2NyIgcj0iMiIvPjwvZz4KPHBhdGggZD0iTTYxMiAxNzZxLTQgMTYgMiAyMiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZDA5ZjdmIiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8cGF0aCBkPSJNNTkyIDIwOHEyMCAxNiA0MCAwIiBmaWxsPSJub25lIiBzdHJva2U9IiNjMDY0NWEiIHN0cm9rZS13aWR0aD0iNC41IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPGcgZmlsbD0iI2YyYTc5YyIgb3BhY2l0eT0iLjQ1Ij48ZWxsaXBzZSBjeD0iNTcxIiBjeT0iMTk4IiByeD0iMTIiIHJ5PSI4Ii8+PGVsbGlwc2UgY3g9IjY1MyIgY3k9IjE5OCIgcng9IjEyIiByeT0iOCIvPjwvZz4KPC9zdmc+Cg==) right center/auto 100% no-repeat,#fff;border:1px solid #e6edf8;box-shadow:var(--sh)}
+.hero h1{font-size:36px}
+.card,.stat,.qa button{border-radius:16px;border-color:#e6edf8}
+.pill{background:#fff;border:1px solid #d9e4f5;color:#334155;padding:7px 20px;font-weight:500}
+.pill.on{background:#2563eb;border-color:#2563eb;color:#fff;box-shadow:0 4px 10px rgba(37,99,235,.3)}
+.pill[data-f=c]{background:#fff1f1;border-color:#f8cfcf;color:#e5484d}
+.st{border:1px solid rgba(0,0,0,.08)}
+img.av{object-fit:cover;background:#dbe7fb;display:block}
+thead th{background:#f3f7fd}
+@media(max-width:860px){.hero{background-size:auto 100%;padding:20px}.hero p{max-width:70%}}
+
+button{position:relative;overflow:hidden;transition:transform .12s,box-shadow .15s,background .15s}
+button:active{transform:scale(.97)}
+.rp{position:absolute;border-radius:50%;background:rgba(37,99,235,.28);transform:scale(0);animation:rp .55s ease-out forwards;pointer-events:none}
+.rb .rp,.pill.on .rp,.b1 .rp{background:rgba(255,255,255,.4)}
+@keyframes rp{to{transform:scale(4);opacity:0}}
+@media(prefers-reduced-motion:reduce){.rp{display:none}}
+.rb{margin-top:16px;border:0;background:#2563eb;color:#fff;border-radius:12px;padding:11px 20px;font-weight:600;font-size:13px;box-shadow:0 6px 14px rgba(37,99,235,.3)}
+.rb:hover{background:#1d4fd8}.rb.sm{margin:0;padding:8px 14px;font-size:12px;white-space:nowrap}
+.flow{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}
+.flow button{border:1px solid #e6edf8;background:#fff;border-radius:12px;padding:12px;text-align:left;font-size:12px;font-weight:600;color:var(--tx);display:flex;gap:10px;align-items:center}
+.flow button i{width:24px;height:24px;border-radius:50%;background:var(--pr2);color:var(--pr);display:grid;place-items:center;font-style:normal;font-size:11px;flex:none}
+.flow button:hover,.qa button:hover{border-color:var(--pr);box-shadow:0 6px 16px rgba(37,99,235,.12)}
+.mods{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:16px;align-items:start}
+.mods .wide{grid-column:1/-1}
+.mh{display:flex;gap:12px;align-items:center;margin-bottom:16px}.mh h3{margin:0;font-size:15px}.mh small{color:var(--mu);font-size:11.5px}
+.fg{display:grid;grid-template-columns:repeat(2,1fr);gap:12px 14px}.wide .fg{grid-template-columns:repeat(3,1fr)}
+.f{display:flex;flex-direction:column;gap:5px;font-size:11.5px;font-weight:600;color:#334155}.f.full{grid-column:1/-1}
+.f input,.f textarea{font:inherit;font-weight:400;border:1px solid #d9e4f5;border-radius:10px;padding:9px 11px;background:#fff;color:var(--tx);width:100%}
+.f textarea{min-height:64px;resize:vertical}.f input:focus,.f textarea:focus{outline:2px solid var(--pr);border-color:transparent}
+.ch{display:flex;gap:8px;flex-wrap:wrap}.ch button{border:1px solid #d9e4f5;background:#fff;border-radius:10px;padding:8px 16px;font-size:12px;color:#334155}
+.ch button:hover{border-color:var(--pr);color:var(--pr)}
+.mf{display:flex;gap:10px;margin-top:16px;justify-content:flex-end;align-items:center;flex-wrap:wrap}.mf p{margin:0 auto 0 0;font-size:10.5px;color:var(--mu);max-width:60%}
+.mf button{border-radius:10px;padding:9px 18px;font-size:12px;font-weight:600;border:1px solid #d9e4f5;background:#fff;color:#334155}
+.mf .b1{background:#2563eb;border-color:#2563eb;color:#fff}
+@media(max-width:1180px){.flow{grid-template-columns:repeat(3,1fr)}.wide .fg{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:860px){.mods{grid-template-columns:1fr}.rb.sm{display:none}}
+@media(max-width:520px){.flow,.fg,.wide .fg{grid-template-columns:1fr}}
+</style>
+<link rel="stylesheet" href="nakkada-extra.css">
+<style>
+.breadcrumb{font-size:11px;color:var(--mu);margin-bottom:10px}.breadcrumb a{color:var(--pr);text-decoration:none}
+.form-hero{display:flex;justify-content:space-between;align-items:flex-start;gap:18px;margin:8px 0 20px}
+.form-hero h1{font-size:30px;margin:3px 0 5px;letter-spacing:-.02em}.form-hero p{margin:0;color:var(--mu)}
+.rc-layout{display:grid;grid-template-columns:340px minmax(0,1fr);gap:16px;align-items:start}
+.rc-list{padding:14px;position:sticky;top:76px;max-height:calc(100vh - 96px);display:flex;flex-direction:column}
+.rc-tools{display:flex;flex-direction:column;gap:8px;margin-bottom:10px}
+.rc-tools input,.rc-tools select{width:100%;border:1px solid #d9e4f5;border-radius:10px;padding:9px 11px;font:13px Inter,system-ui,sans-serif;background:#fff;color:var(--tx)}
+.rc-items{overflow:auto;display:flex;flex-direction:column;gap:8px;padding:2px}
+.rc-item{border:1px solid var(--line);border-radius:12px;padding:11px 12px;cursor:pointer;background:#fff;text-align:left;width:100%;display:block}
+.rc-item:hover{border-color:var(--pr)}
+.rc-item.on{border-color:var(--pr);background:var(--pr2);box-shadow:0 0 0 2px rgba(37,99,235,.15)}
+.rc-item b{display:block;font-size:13px}.rc-item small{display:block;color:var(--mu);font-size:11px;margin-top:2px}
+.rc-item .chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:7px}
+.bedchip{display:inline-flex;align-items:center;gap:5px;border-radius:12px;padding:2px 10px;font-size:10.5px;font-weight:600;background:#f1ebfe;color:#7c3aed;border:1px solid rgba(0,0,0,.08)}
+.rc-empty{padding:34px 20px;text-align:center;color:var(--mu)}
+.rc-empty b{display:block;color:var(--tx);font-size:15px;margin-bottom:6px}
+.rc-empty .rb{display:inline-block;margin-top:14px;text-decoration:none}
+.rp-head{display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding-bottom:16px;border-bottom:1px solid var(--line);margin-bottom:6px}
+.rp-head .who{display:flex;gap:14px;align-items:center}
+.rp-head .av{width:60px;height:60px;font-size:20px}
+.rp-head h2{margin:0 0 3px;font-size:22px;letter-spacing:-.01em}
+.rp-head small{color:var(--mu);font-size:12px}
+.rp-head .chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.rp-btns{display:flex;gap:8px;flex-wrap:wrap}
+.rp-btns a,.rp-btns button{border:1px solid #d9e4f5;background:#fff;color:#334155;border-radius:10px;padding:8px 14px;font-size:12px;font-weight:600;text-decoration:none}
+.rp-btns .primary{background:var(--pr);border-color:var(--pr);color:#fff}
+.rp-sec{margin-top:20px}
+.rp-sec h3{margin:0 0 10px;font-size:12px;letter-spacing:.06em;color:var(--pr);display:flex;align-items:center;gap:8px;text-transform:uppercase}
+.rp-sec h3:after{content:"";flex:1;height:1px;background:var(--line)}
+.nk-kv{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.nk-kv>div{background:#fff;padding:10px 12px;min-width:0}
+.nk-kv>div.w{grid-column:1/-1}
+.nk-kv span{display:block;font-size:10.5px;color:var(--mu);font-weight:600;letter-spacing:.02em;margin-bottom:2px}
+.nk-kv b{display:block;font-size:13px;font-weight:500;overflow-wrap:anywhere;white-space:pre-wrap}
+.nk-kv b.nil{color:#b6c0d0}
+.rp-sub{font-size:11.5px;font-weight:700;margin:14px 0 8px;color:var(--tx)}
+.rp-tl{list-style:none;margin:10px 0 0;padding:0 0 0 18px;border-left:2px solid var(--line)}
+.rp-tl li{position:relative;margin:0 0 9px;font-size:12px}
+.rp-tl li:before{content:"";position:absolute;left:-24px;top:3px;width:10px;height:10px;border-radius:50%;background:#fff;border:2px solid var(--pr)}
+.rp-tl small{color:var(--mu);margin-left:6px}
+.rp-card{border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-bottom:10px;background:#fff}
+.rp-card .top2{display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin-bottom:6px;font-size:12.5px}
+.rp-none{color:var(--mu);font-size:12px;padding:12px 14px;border:1px dashed #cfdaeb;border-radius:12px;background:#fafcff}
+.rp-none a{color:var(--pr);font-weight:600;text-decoration:none}
+@media(max-width:1000px){.rc-layout{grid-template-columns:1fr}.rc-list{position:static;max-height:360px}}
+@media print{
+ body{background:#fff!important}
+ .top,.side,.breadcrumb,.form-hero,.rc-list,.rp-btns,footer,.rp-none a{display:none!important}
+ .shell{display:block}main{padding:0!important}.rc-layout{display:block}
+ .card{box-shadow:none!important;border:0!important;padding:0!important}
+ .rp-sec{break-inside:avoid}.nk-kv>div{break-inside:avoid}
+}
+</style><link rel="stylesheet" href="nakkada-theme.css">
+<script src="nakkada-theme.js"></script>
+</head><body>
+<svg width="0" height="0" style="position:absolute"><defs>
+<symbol id="i-home" viewBox="0 0 24 24"><path d="M3 11l9-8 9 8M5 10v10h14V10"/></symbol>
+<symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/></symbol>
+<symbol id="i-plus" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></symbol>
+<symbol id="i-clip" viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4h6v3H9zM9 12h6M9 16h4"/></symbol>
+<symbol id="i-brain" viewBox="0 0 24 24"><path d="M9 4a3 3 0 00-3 3 3 3 0 00-2 5 3 3 0 002 5 3 3 0 006 1V4a3 3 0 00-3 0zM15 4a3 3 0 013 3 3 3 0 012 5 3 3 0 01-2 5 3 3 0 01-6 1"/></symbol>
+<symbol id="i-bed" viewBox="0 0 24 24"><path d="M3 18V6M3 14h18v4M21 14v-3a3 3 0 00-3-3h-7v6"/><circle cx="7" cy="11" r="1.5"/></symbol>
+<symbol id="i-pill" viewBox="0 0 24 24"><rect x="3" y="9" width="18" height="6" rx="3" transform="rotate(-40 12 12)"/><path d="M9.5 9.5l5 5"/></symbol>
+<symbol id="i-file" viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6zM14 3v4h4M9 13h6M9 17h6"/></symbol>
+<symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 20V4M4 20h16M8 15l4-4 3 3 5-6"/></symbol>
+<symbol id="i-msg" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></symbol>
+<symbol id="i-cal" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="16" rx="2"/><path d="M8 3v4M16 3v4M4 10h16"/></symbol>
+<symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-4 8-8 9-4-1-8-4-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></symbol>
+<symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/></symbol>
+<symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 17V11a6 6 0 0112 0v6l2 2H4zM10 21h4"/></symbol>
+<symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></symbol>
+<symbol id="i-folder" viewBox="0 0 24 24"><path d="M3 6h7l2 2h9v11H3z"/></symbol>
+</defs></svg>
+<header class="top">
+ <div class="logo"><i>✚</i><div>NAKKADA<small>Mission Hospital · Neuro Psychiatric Centre</small></div></div>
+  <label class="search t"><svg width="15" height="15" class="ico" style="background:none;width:15px;height:15px"><use href="#i-search" stroke="currentColor" fill="none" stroke-width="2"/></svg><input id="q2" placeholder="Search patients, file no…" aria-label="Search"></label>
+ <div class="sp"></div>
+ <button class="ib" aria-label="Notifications"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"/><path d="M10 21h4"/></svg></button>
+ <button class="rb sm" id="rb0" onclick="window.location.href='op-registration.html'">＋ Register Patient</button>
+ <span class="sec pill2">System Secure</span>
+ <div class="me"><div class="av">DT</div><span>Dr. Thomas Mathew<small>Consultant Psychiatrist</small></span></div>
+</header>
+<div class="shell">
+<aside class="side" aria-label="Sections">
+ <a href="index.html"><svg><use href="#i-home"/></svg>Dashboard</a>
+ <h6>Patient flow</h6>
+ <a href="op-registration.html"><svg><use href="#i-plus"/></svg>OP Registration</a>
+ <a href="initial-assessment.html"><svg><use href="#i-clip"/></svg>Initial Assessment</a>
+ <a href="mental-status-exam.html"><svg><use href="#i-brain"/></svg>Mental Status Exam</a>
+ <a href="bed-allocation.html"><svg><use href="#i-bed"/></svg>Bed Allocation</a>
+ <a href="diagnosis-treatment.html"><svg><use href="#i-pill"/></svg>Diagnosis &amp; Treatment</a>
+ <h6>Registry</h6>
+ <a href="medical-files.html"><svg><use href="#i-folder"/></svg>Medical Files</a>
+ <a class="on" href="records.html"><svg><use href="#i-file"/></svg>Records</a>
+ <div class="prot"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="1.8"><use href="#i-shield"/></svg><b>Your data is protected</b>Patient files are for hospital use only. Not to be handled by the patient.<br><button>Learn more</button></div>
+</aside>
+<main>
+
+ <div class="breadcrumb"><a href="index.html">Dashboard</a> / Records</div>
+ <div class="form-hero"><div><p class="g">Registry · Patient records</p><h1>Patient Records</h1><p>Full patient report: registration, file cover, OP ticket, initial assessment and bed history.</p></div><span class="sec pill2">System Secure</span></div>
+ <div class="rc-layout">
+  <section class="card rc-list" aria-label="Patient list">
+   <div class="rc-tools">
+    <input id="rcSearch" type="search" placeholder="Search name, patient ID, file no., phone" aria-label="Search records">
+    <select id="rcFilter" aria-label="Filter"><option value="all">All patients</option><option value="in">Currently admitted</option><option value="op">Out-patient only</option></select>
+   </div>
+   <div class="rc-items" id="rcItems"></div>
+  </section>
+  <section class="card" id="rcReport" aria-live="polite"></section>
+ </div>
+
+ <footer><div class="logo" style="font-size:14px"><i style="width:24px;height:24px;font-size:16px">✚</i>NAKKADA</div><span>Ramanchira, Thiruvalla – 689 101 · Ph. 0469 2600360 · © 2026</span></footer>
+</main></div>
+<script src="nakkada-data.js"></script>
+<script>
+(function(){
+ const {K,read,esc,fmtDT,fmtD,TICKET_CLASS}=NK;
+ const nk=(s)=>(s||'').trim().toLowerCase().replace(/\s+/g,' ');
+ const FC=['fileNumber','fileDate','coverPatientName','coverAge','coverSex','guardianName','guardianRelation','dob','homeAddress','religion','bloodGroup','coverPhone','coverDepartment'];
+ let patients=[],sel=null,q='',flt='all';
+
+ function gather(p){
+  const tickets=read(K.tickets).filter(t=>t.patientId===p.patientId);
+  const fo=NK.fileOf(p),file=fo.file,cover=fo.cover;
+  const assess=read(K.assess).filter(a=>nk(a.patientName)===nk(p.patientName));
+  const adms=read(K.adm).filter(a=>a.patientId===p.patientId).sort((a,b)=>(a.admittedAt<b.admittedAt?-1:1));
+  return {tickets,file,cover,assess,adms,active:adms.find(a=>!a.dischargedAt)};
+ }
+ const initials=(n)=>(n||'?').split(/\s+/).filter(Boolean).slice(0,2).map(x=>x[0].toUpperCase()).join('');
+ const kv=(label,val,wide)=>`<div${wide?' class="w"':''}><span>${esc(label)}</span><b${val?'':' class="nil"'}>${val?esc(val):'—'}</b></div>`;
+ const chip=(t)=>`<span class="tkc ${TICKET_CLASS[t.status]||''}">${esc(t.status)}</span>`;
+
+ function renderList(){
+  const box=document.getElementById('rcItems');
+  const list=patients.filter(p=>{
+   const g=gather(p);const hay=[p.patientName,p.patientId,p.fileNumber,g.file.fileNumber,p.mobile,p.coverPhone].join(' ').toLowerCase();
+   if(q&&!hay.includes(q))return false;
+   if(flt==='in'&&!g.active)return false;
+   if(flt==='op'&&g.active)return false;
+   return true;
+  });
+  if(!patients.length){box.innerHTML='<div class="rc-empty"><b>No patient records yet</b>Register a patient in OP Registration and the full record will appear here.<br><a class="rb" href="op-registration.html">＋ Register Patient</a></div>';return;}
+  if(!list.length){box.innerHTML='<div class="rc-empty">No records match your search.</div>';return;}
+  box.innerHTML=list.map(p=>{
+   const g=gather(p),t=g.tickets[g.tickets.length-1];
+   return `<button type="button" class="rc-item${p.patientId===sel?' on':''}" data-id="${esc(p.patientId)}"><b>${esc(p.patientName||'Unnamed patient')}</b><small>${esc(p.patientId)} · ${esc(g.file.fileNumber?'File '+g.file.fileNumber:'No file no.')} · ${esc(p.age||'—')} / ${esc((p.sex||'—').charAt(0))}</small><span class="chips">${t?chip(t):''}${g.active?`<span class="bedchip">Bed ${esc(g.active.bedId)}</span>`:''}</span></button>`;
+  }).join('');
+ }
+
+ function renderReport(){
+  const box=document.getElementById('rcReport');
+  const p=patients.find(x=>x.patientId===sel);
+  if(!p){box.innerHTML='<div class="rc-empty"><b>Select a patient</b>Choose a patient on the left to see the complete report.</div>';return;}
+  const g=gather(p),f=g.file;
+  const lastT=g.tickets[g.tickets.length-1];
+  const lastEd=NK.latestEdit([p,g.cover].concat(g.assess));
+  let h=`<div class="rp-head"><div class="who"><div class="av">${esc(initials(p.patientName))}</div><div><h2>${esc(p.patientName)}</h2><small>Patient ID ${esc(p.patientId)}${f.fileNumber?' · File No. '+esc(f.fileNumber):''} · Registered ${esc(fmtDT(p.savedAt))}</small>${lastEd?`<span class="nke-when">✎ ${esc(NK.editedLine(lastEd))}</span>`:''}<div class="chips">${lastT?chip(lastT):''}${g.active?`<span class="bedchip">In-patient · Bed ${esc(g.active.bedId)}</span>`:'<span class="tkc tk-c">Out-patient</span>'}</div></div></div><div class="rp-btns"><a href="bed-allocation.html">Bed Allocation</a><button type="button" class="primary" onclick="window.print()">Print report</button></div></div>`;
+
+  h+=`<div class="rp-sec"><h3>Patient details${NK.editBtn('patient')}</h3>${NK.editedHTML(p)}<div class="nk-kv">${kv('Patient official name',p.patientName)}${kv('Patient ID',p.patientId)}${kv('Mobile / telephone',p.mobile)}${kv('Sex',p.sex)}${kv('Age',p.age)}${kv('PIN',p.pin)}${kv('Department / doctor',p.departmentDoctor)}${kv('Booked earlier',p.bookedEarlier)}${kv('Booking number',p.bookingNumber)}${kv('Diabetic',p.diabetic)}${kv('Allergic to any medicine',p.medicineAllergy)}${kv('Registration date',p.registrationDate?fmtD(p.registrationDate):'')}${kv('Address',p.address,1)}</div></div>`;
+
+  h+=`<div class="rp-sec"><h3>Medical file cover${NK.editBtn('cover')}</h3>${NK.editedHTML(g.cover)}<div class="nk-kv">${kv('File number',f.fileNumber)}${kv('File date',f.fileDate?fmtD(f.fileDate):'')}${kv('Name of patient',f.coverPatientName||p.patientName)}${kv('Age',f.coverAge||p.age)}${kv('Sex',f.coverSex||p.sex)}${kv('Date of birth',f.dob?fmtD(f.dob):'')}${kv('Name of guardian',f.guardianName)}${kv('Relationship with patient',f.guardianRelation)}${kv('Religion',f.religion)}${kv('Blood group',f.bloodGroup)}${kv('Phone',f.coverPhone||p.mobile)}${kv('Department',f.coverDepartment)}${kv('Home address',f.homeAddress||p.address,1)}</div></div>`;
+
+  h+=`<div class="rp-sec"><h3>Declaration</h3><div class="nk-kv">${kv('Name & signature',p.patientSignature)}${kv('Date',p.registrationDate?fmtD(p.registrationDate):'')}</div></div>`;
+
+  h+=`<div class="rp-sec"><h3>OP ticket</h3>`;
+  if(!g.tickets.length)h+='<div class="rp-none">No OP ticket was issued for this record.</div>';
+  g.tickets.slice().reverse().forEach(t=>{
+   h+=`<div class="rp-card"><div class="top2"><span><span class="tk-token">${esc(t.token)}</span> &nbsp;<b>${esc(t.id)}</b> · ${esc(t.dept||'—')}</span>${chip(t)}</div><div style="margin:8px 0"><button type="button" class="rc-print-tk" data-tid="${esc(t.id)}" style="border:1px solid #d9e4f5;background:#fff;color:#334155;border-radius:9px;padding:6px 12px;font-size:12px;font-weight:600;cursor:pointer">🖨 Print OP ticket</button></div><ul class="rp-tl">${(t.log||[]).map(l=>`<li>${esc(l.status)}<small>${esc(fmtDT(l.at))}</small></li>`).join('')}</ul></div>`;
+  });
+  h+='</div>';
+
+  const AL={patientName:'Patient name',age:'Age',sex:'Sex',assessmentDate:'Assessment date',education:'Education',occupation:'Occupation',religion:'Religion',maritalStatus:'Marital status',socialClass:'Social class',informant:'Informant',relation:'Relation',contact:'Contact',chiefComplaints:'Chief complaints',presentIllness:'History of present illness',premorbid:'Premorbid personality',familyHistory:'Family history',childhoodHistory:'Childhood history',educationOccupationHistory:'Educational & occupation history',psychiatricHistory:'Psychiatric history',medicalHistory:'Medical history',physicalCondition:'Physical condition as on admission',appearance:'Appearance',motorActivity:'Motor activity',speechActivity:'Speech activity',mood:'Mood',alertness:'Alertness',thoughts:'Thoughts',perceptions:'Perceptions',orientation:'Orientation',memory:'Memory',mathematicalAbility:'Simple mathematical operation',abstractThinking:'Abstract thinking',attitude:'Attitude',physicalExamination:'Physical examination',investigations:'Investigations',diagnosis:'Diagnosis',treatment:'Treatment',doctor:'Doctor'};
+  const G1=['patientName','age','sex','assessmentDate','education','occupation','religion','maritalStatus','socialClass','informant','relation','contact'];
+  const G2=['chiefComplaints','presentIllness','premorbid','familyHistory','childhoodHistory','educationOccupationHistory','psychiatricHistory','medicalHistory','physicalCondition'];
+  const G3=['appearance','motorActivity','speechActivity','mood','alertness','thoughts','perceptions','orientation','memory','mathematicalAbility','abstractThinking','attitude'];
+  const G4=['physicalExamination','investigations','diagnosis','treatment','doctor'];
+  h+=`<div class="rp-sec"><h3>Initial assessment</h3>`;
+  if(!g.assess.length)h+='<div class="rp-none">No initial assessment recorded for this patient yet. <a href="initial-assessment.html">Open Initial Assessment</a> (the patient name must match the registration).</div>';
+  g.assess.slice().reverse().forEach((a,i)=>{
+   const blk=(keys,wide)=>`<div class="nk-kv">${keys.map(k=>kv(AL[k],k==='assessmentDate'&&a[k]?fmtD(a[k]):a[k],wide)).join('')}</div>`;
+   h+=`<div class="rp-card"><div class="top2"><b>Assessment ${g.assess.length-i}</b><span style="color:var(--mu)">Saved ${esc(fmtDT(a.savedAt))} ${NK.editBtn('assess',' data-idx="'+(g.assess.length-1-i)+'"')}</span></div>${NK.editedHTML(a)}${blk(G1)}<div class="rp-sub">Presenting problem &amp; history</div>${blk(G2,1)}<div class="rp-sub">Mental status examination</div>${blk(G3)}<div class="rp-sub">Examination, diagnosis &amp; treatment</div>${blk(G4)}</div>`;
+  });
+  h+='</div>';
+
+  h+=`<div class="rp-sec"><h3>Admission &amp; bed history</h3>`;
+  if(!g.adms.length)h+='<div class="rp-none">Never admitted. A bed can be assigned from <a href="bed-allocation.html">Bed Allocation</a>.</div>';
+  g.adms.slice().reverse().forEach(a=>{
+   const done=!!a.dischargedAt;
+   h+=`<div class="rp-card"><div class="top2"><span><b>Bed ${esc(a.bedId)}</b> · ${esc(a.type)} admission</span><span class="${done?'tkc tk-d':'tkc tk-a'}">${done?'Discharged':'Admitted'}</span></div><div class="nk-kv">${kv('Admitted',fmtDT(a.admittedAt))}${kv('Attending doctor',a.doctor)}${kv('Guardian contact',a.guardianContact)}${kv('Reason / diagnosis',a.reason,1)}${done?kv('Discharged',fmtDT(a.dischargedAt))+kv('Discharge type',a.dischargeType)+kv('Follow-up',a.followUp?fmtD(a.followUp):'')+kv('Discharge summary',a.dischargeSummary,1):''}</div>${(a.transfers||[]).length?`<ul class="rp-tl">${a.transfers.map(t=>`<li>Transferred ${esc(t.from)} → ${esc(t.to)}${t.reason?' ('+esc(t.reason)+')':''}<small>${esc(fmtDT(t.at))}</small></li>`).join('')}</ul>`:''}</div>`;
+  });
+  h+='</div>';
+  box.innerHTML=h;
+ }
+
+ function load(){
+  patients=read(K.patients).slice().sort((a,b)=>((b.savedAt||'')<(a.savedAt||'')?-1:1));
+  if(sel&&!patients.some(p=>p.patientId===sel))sel=null;
+  renderList();renderReport();
+ }
+ function pick(id){sel=id;try{history.replaceState(null,'','?id='+encodeURIComponent(id))}catch(e){}renderList();renderReport();if(window.innerWidth<=1000)document.getElementById('rcReport').scrollIntoView({behavior:'smooth'});}
+ function doEdit(kind,idx,opener){
+  const p=patients.find(x=>x.patientId===sel);if(!p)return;
+  const g=gather(p),now=()=>new Date().toISOString();
+  if(kind==='patient'){
+   NK.openEdit({title:'Edit patient details',sub:p.patientName+' · '+p.patientId,fields:NK.FIELDS.patient,values:p,opener,
+    onSave:(vals,meta)=>{NK.applyEdit(K.patients,a=>a.find(x=>x.patientId===p.patientId),vals,meta);if(vals.patientName!==p.patientName)NK.renameLinks(p.patientId,p.patientName,vals.patientName);},onDone:load});
+  }else if(kind==='cover'){
+   NK.openEdit({title:'Edit medical file cover',sub:p.patientName+' · '+p.patientId,fields:NK.FIELDS.cover,values:g.file,opener,
+    onSave:(vals,meta)=>{const create=Object.assign({patientId:p.patientId,patientName:p.patientName,savedAt:now()},g.file);
+     NK.applyEdit(K.covers,all=>{const m=NK.coversFor(p,all);return m[m.length-1]||null;},vals,meta,create);},onDone:load});
+  }else if(kind==='assess'){
+   const a=g.assess[idx];if(!a)return;
+   NK.openEdit({title:'Edit initial assessment',sub:p.patientName+' · saved '+fmtDT(a.savedAt),fields:NK.FIELDS.assess,values:a,lockKeys:['patientName'],opener,
+    onSave:(vals,meta)=>{NK.applyEdit(K.assess,all=>all.find(x=>NK.sameAssessment(x,a)),vals,meta);},onDone:load});
+  }
+ }
+ document.getElementById('rcReport').addEventListener('click',e=>{const b=e.target.closest('[data-edit]');if(b)doEdit(b.dataset.edit,+b.dataset.idx,b);});
+ document.getElementById('rcItems').addEventListener('click',e=>{const b=e.target.closest('.rc-item');if(b)pick(b.dataset.id);});
+ const search=(v)=>{q=v.trim().toLowerCase();renderList();};
+ document.getElementById('rcSearch').addEventListener('input',e=>{document.getElementById('q2').value=e.target.value;search(e.target.value);});
+ document.getElementById('q2').addEventListener('input',e=>{document.getElementById('rcSearch').value=e.target.value;search(e.target.value);});
+ document.getElementById('rcFilter').addEventListener('change',e=>{flt=e.target.value;renderList();});
+ window.addEventListener('storage',load);
+ const want=new URLSearchParams(location.search).get('id');
+ patients=read(K.patients).slice().sort((a,b)=>((b.savedAt||'')<(a.savedAt||'')?-1:1));
+ sel=(want&&patients.some(p=>p.patientId===want))?want:(patients[0]&&patients[0].patientId)||null;
+ load();
+ const ed=new URLSearchParams(location.search).get('edit');
+ if(ed&&sel){try{history.replaceState(null,'','?id='+encodeURIComponent(sel))}catch(x){}setTimeout(()=>doEdit(ed,0,null),0);}
+})();
+document.addEventListener('click',e=>{const b=e.target.closest('.rc-print-tk');if(!b)return;const t=NK.read(NK.K.tickets).find(x=>x.id===b.dataset.tid);if(t)NK.printTicket(t);});
+</script></body></html>

@@ -1,0 +1,93 @@
+/* Nakkada portal – dark theme.
+   Generated overrides for every light-only colour used by the pages, plus the toggle button.
+   Switch is in the header (sun/moon). Variables (--bg, --card, --tx …) are defined in each page. */
+:root[data-theme="dark"]{color-scheme:dark}
+:root[data-theme="dark"] body{color-scheme:dark}
+:root[data-theme="dark"] ::selection{background:#27407a;color:#fff}
+:root[data-theme="dark"] input::placeholder,:root[data-theme="dark"] textarea::placeholder{color:#6b7b99}
+:root[data-theme="dark"] option{background:#111a2c;color:#e8eefc}
+:root[data-theme="dark"] .rp{background:rgba(125,164,255,.3)}
+.nk-theme{cursor:pointer;color:var(--mu);flex:none}
+.nk-theme:hover{color:var(--pr);border-color:var(--pr)}
+.nk-theme svg{display:block}
+@media print{.nk-theme{display:none!important}}
+
+/* hero illustration: keep the artwork, dim it and fade into the dark card */
+:root[data-theme="dark"] .hero{background:linear-gradient(90deg,#111a2c 38%,rgba(17,26,44,.85) 52%,rgba(17,26,44,0) 72%),linear-gradient(rgba(11,18,32,.42),rgba(11,18,32,.42)),url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAwIDQwNSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ieE1pZFlNaWQgc2xpY2UiPgo8ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjZjRmOGZlIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjZGNlOGY4Ii8+PC9saW5lYXJHcmFkaWVudD4KPGxpbmVhckdyYWRpZW50IGlkPSJjb2F0IiB4MT0iMCIgeTE9IjAiIHgyPSIwIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjZmZmZmZmIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjZThlZmY5Ii8+PC9saW5lYXJHcmFkaWVudD4KPGxpbmVhckdyYWRpZW50IGlkPSJza2luIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjZjZkNGI4Ii8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjZTliOTk2Ii8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+CjxyZWN0IHdpZHRoPSIxMjAwIiBoZWlnaHQ9IjQwNSIgZmlsbD0idXJsKCNiZykiLz4KPGcgZmlsbD0iI2ZmZiIgb3BhY2l0eT0iLjciPjxyZWN0IHg9Ijc2MCIgeT0iMzAiIHdpZHRoPSIxNTAiIGhlaWdodD0iMTkwIiByeD0iOCIvPjxyZWN0IHg9IjkzMCIgeT0iMzAiIHdpZHRoPSIxNTAiIGhlaWdodD0iMTkwIiByeD0iOCIvPjwvZz4KPGcgZmlsbD0iI2NmZTBmNiIgb3BhY2l0eT0iLjgiPjxyZWN0IHg9Ijc2MCIgeT0iMTIyIiB3aWR0aD0iMzIwIiBoZWlnaHQ9IjYiLz48cmVjdCB4PSI5MTEiIHk9IjMwIiB3aWR0aD0iNiIgaGVpZ2h0PSIxOTAiLz48L2c+CjxyZWN0IHg9IjAiIHk9IjM3MiIgd2lkdGg9IjEyMDAiIGhlaWdodD0iMzMiIGZpbGw9IiNjYmRiZjEiLz4KPGc+PHJlY3QgeD0iMTAxMCIgeT0iMzE4IiB3aWR0aD0iODYiIGhlaWdodD0iODciIHJ4PSIxMCIgZmlsbD0iI2YxZjVmYSIgc3Ryb2tlPSIjZDNkZWVlIiBzdHJva2Utd2lkdGg9IjIiLz4KPGcgZmlsbD0iIzIyYTM1YSI+PGVsbGlwc2UgY3g9IjEwNTMiIGN5PSIyNTAiIHJ4PSIxNiIgcnk9IjYyIi8+PGVsbGlwc2UgY3g9IjEwMjAiIGN5PSIyNzAiIHJ4PSIxNCIgcnk9IjUyIiB0cmFuc2Zvcm09InJvdGF0ZSgtMzUgMTAyMCAyNzApIi8+PGVsbGlwc2UgY3g9IjEwODYiIGN5PSIyNzAiIHJ4PSIxNCIgcnk9IjUyIiB0cmFuc2Zvcm09InJvdGF0ZSgzNSAxMDg2IDI3MCkiLz48L2c+CjxnIGZpbGw9IiMxNjg2NGEiPjxlbGxpcHNlIGN4PSIxMDM2IiBjeT0iMjkwIiByeD0iOSIgcnk9IjM2IiB0cmFuc2Zvcm09InJvdGF0ZSgtMTggMTAzNiAyOTApIi8+PGVsbGlwc2UgY3g9IjEwNzAiIGN5PSIyOTAiIHJ4PSI5IiByeT0iMzYiIHRyYW5zZm9ybT0icm90YXRlKDE4IDEwNzAgMjkwKSIvPjwvZz48L2c+CjxlbGxpcHNlIGN4PSI2MTAiIGN5PSI0MDAiIHJ4PSIyNTAiIHJ5PSIxMCIgZmlsbD0iIzlkYjZkOCIgb3BhY2l0eT0iLjM1Ii8+CjxwYXRoIGQ9Ik0zNTAgNDA1QzM1OCAzMzAgNDMwIDI3OCA1MjAgMjU2TDcwMCAyNTZDNzkwIDI3OCA4NjIgMzMwIDg3MCA0MDVaIiBmaWxsPSJ1cmwoI2NvYXQpIiBzdHJva2U9IiNkM2UwZjIiIHN0cm9rZS13aWR0aD0iMyIvPgo8cmVjdCB4PSI1NzIiIHk9IjIxNCIgd2lkdGg9Ijc2IiBoZWlnaHQ9IjU4IiByeD0iMjIiIGZpbGw9IiNlOWI5OTYiLz4KPHBhdGggZD0iTTU0NSAyNTZMNjEwIDM1OEw2NzUgMjU2WiIgZmlsbD0iIzI1NjNlYiIvPgo8cGF0aCBkPSJNNTIwIDI1Nkw1ODAgMjY4TDU1MiAzNTBMNDg4IDMwNloiIGZpbGw9IiNmN2ZhZmYiIHN0cm9rZT0iI2QzZTBmMiIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+CjxwYXRoIGQ9Ik03MDAgMjU2TDY0MCAyNjhMNjY4IDM1MEw3MzIgMzA2WiIgZmlsbD0iI2Y3ZmFmZiIgc3Ryb2tlPSIjZDNlMGYyIiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPHBhdGggZD0iTTU1NiAyNTJDNTQwIDMzMCA1NjYgMzc2IDYxMCAzODBDNjU0IDM3NiA2ODAgMzMwIDY2NCAyNTIiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzFmMjkzNyIgc3Ryb2tlLXdpZHRoPSI4IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPGNpcmNsZSBjeD0iNjEwIiBjeT0iMzg0IiByPSIxNyIgZmlsbD0iI2NiZDVlMSIgc3Ryb2tlPSIjMWYyOTM3IiBzdHJva2Utd2lkdGg9IjYiLz4KPHJlY3QgeD0iNzE4IiB5PSIzMTIiIHdpZHRoPSI2NCIgaGVpZ2h0PSIzNCIgcng9IjUiIGZpbGw9IiNmZmYiIHN0cm9rZT0iI2JjZDBlYyIgc3Ryb2tlLXdpZHRoPSIyIi8+PHJlY3QgeD0iNzI2IiB5PSIzMjAiIHdpZHRoPSIyMiIgaGVpZ2h0PSI2IiByeD0iMyIgZmlsbD0iIzI1NjNlYiIvPjxyZWN0IHg9IjcyNiIgeT0iMzMxIiB3aWR0aD0iNDYiIGhlaWdodD0iNSIgcng9IjIuNSIgZmlsbD0iI2NiZDVlMSIvPgo8ZWxsaXBzZSBjeD0iNTQ2IiBjeT0iMTcyIiByeD0iMTAiIHJ5PSIxOCIgZmlsbD0iI2U5Yjk5NiIvPjxlbGxpcHNlIGN4PSI2NzQiIGN5PSIxNzIiIHJ4PSIxMCIgcnk9IjE4IiBmaWxsPSIjZTliOTk2Ii8+CjxlbGxpcHNlIGN4PSI2MTAiIGN5PSIxNjgiIHJ4PSI2NCIgcnk9Ijc2IiBmaWxsPSJ1cmwoI3NraW4pIi8+CjxjaXJjbGUgY3g9IjY5MCIgY3k9Ijk2IiByPSIzMCIgZmlsbD0iIzNiMmEyMiIvPgo8cGF0aCBkPSJNNTQ0IDE2OEM1MzYgOTIgNTc4IDcwIDYxNiA3MkM2NjggNzQgNjgyIDExOCA2NzQgMTY2QzY2NCAxMzIgNjQyIDExMiA2MTIgMTEwQzU4MCAxMTIgNTU2IDEzMCA1NDQgMTY4WiIgZmlsbD0iIzNiMmEyMiIvPgo8ZyBzdHJva2U9IiMzYjJhMjIiIHN0cm9rZS13aWR0aD0iNCIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIj48cGF0aCBkPSJNNTc2IDE1MHExNC04IDI4IDAiLz48cGF0aCBkPSJNNjIwIDE1MHExNC04IDI4IDAiLz48L2c+CjxnIGZpbGw9IiMyYjFkMTciPjxlbGxpcHNlIGN4PSI1OTAiIGN5PSIxNzAiIHJ4PSI2IiByeT0iNy41Ii8+PGVsbGlwc2UgY3g9IjYzNCIgY3k9IjE3MCIgcng9IjYiIHJ5PSI3LjUiLz48L2c+CjxnIGZpbGw9IiNmZmYiPjxjaXJjbGUgY3g9IjU5MiIgY3k9IjE2NyIgcj0iMiIvPjxjaXJjbGUgY3g9IjYzNiIgY3k9IjE2NyIgcj0iMiIvPjwvZz4KPHBhdGggZD0iTTYxMiAxNzZxLTQgMTYgMiAyMiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZDA5ZjdmIiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8cGF0aCBkPSJNNTkyIDIwOHEyMCAxNiA0MCAwIiBmaWxsPSJub25lIiBzdHJva2U9IiNjMDY0NWEiIHN0cm9rZS13aWR0aD0iNC41IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPGcgZmlsbD0iI2YyYTc5YyIgb3BhY2l0eT0iLjQ1Ij48ZWxsaXBzZSBjeD0iNTcxIiBjeT0iMTk4IiByeD0iMTIiIHJ5PSI4Ii8+PGVsbGlwc2UgY3g9IjY1MyIgY3k9IjE5OCIgcng9IjEyIiByeT0iOCIvPjwvZz4KPC9zdmc+Cg==) right center/auto 100% no-repeat,#111a2c;border-color:#222f48}
+:root[data-theme="dark"] body{background:#111a2c}
+:root[data-theme="dark"] body{background:linear-gradient(180deg,#0b1220,#0d1627 60%,#111a2c)}
+:root[data-theme="dark"] .pill2{background:#10301f}
+:root[data-theme="dark"] .side{background:#0e1626}
+:root[data-theme="dark"] .side a.on{background:#1a2c52}
+:root[data-theme="dark"] .prot{background:#111a2c}
+:root[data-theme="dark"] .hero{border:1px solid #222f48}
+:root[data-theme="dark"] .card,:root[data-theme="dark"] .stat,:root[data-theme="dark"] .qa button{border-color:#222f48}
+:root[data-theme="dark"] .pill{background:#111a2c;border:1px solid #2a3957;color:#cbd5e8}
+:root[data-theme="dark"] .pill[data-f=c]{background:#3a1618;border-color:#6b2a2e;color:#ff6b70}
+:root[data-theme="dark"] img.av{background:#1a2c52}
+:root[data-theme="dark"] thead th{background:#0f1829}
+:root[data-theme="dark"] .flow button{border:1px solid #222f48;background:#111a2c}
+:root[data-theme="dark"] .f{color:#cbd5e8}
+:root[data-theme="dark"] .f input,:root[data-theme="dark"] .f textarea{border:1px solid #2a3957;background:#111a2c}
+:root[data-theme="dark"] .ch button{border:1px solid #2a3957;background:#111a2c;color:#cbd5e8}
+:root[data-theme="dark"] .mf button{border:1px solid #2a3957;background:#111a2c;color:#cbd5e8}
+:root[data-theme="dark"] .bd-chip{border:1px solid #2a3957;background:#111a2c;color:#cbd5e8}
+:root[data-theme="dark"] .bd{background:#111a2c}
+:root[data-theme="dark"] .bd-svg{background:linear-gradient(180deg,var(--c2),#111a2c 85%)}
+:root[data-theme="dark"] .zz{fill:#93a1bb}
+:root[data-theme="dark"] .dg-h{background:linear-gradient(110deg,#0f1829,#111a2c)}
+:root[data-theme="dark"] .dg-x{background:#111a2c}
+:root[data-theme="dark"] .dg-info>div{background:#111a2c}
+:root[data-theme="dark"] .dg-actions button,:root[data-theme="dark"] .dg-actions a{border:1px solid #2a3957;background:#111a2c;color:#cbd5e8}
+:root[data-theme="dark"] .dg-actions .dng{border-color:#6b2a2e;background:#3a1618}
+:root[data-theme="dark"] .dg-f{color:#cbd5e8}
+:root[data-theme="dark"] .dg-f input,:root[data-theme="dark"] .dg-f select,:root[data-theme="dark"] .dg-f textarea{border:1px solid #2a3957;background:#111a2c}
+:root[data-theme="dark"] .dg-sub button{border:1px solid #2a3957;background:#111a2c;color:#cbd5e8}
+:root[data-theme="dark"] .form-card{border:2px solid #2f4062;background:#111a2c}
+:root[data-theme="dark"] .form-head{background:linear-gradient(110deg,#0f1829,#111a2c);border-bottom:2px solid #2a3957}
+:root[data-theme="dark"] .field{border-bottom:2px solid #27354f}
+:root[data-theme="dark"] .field:nth-child(odd){border-right:2px solid #27354f}
+:root[data-theme="dark"] .field input,:root[data-theme="dark"] .field select,:root[data-theme="dark"] .field textarea{border:1px solid #324463;background:#111a2c}
+:root[data-theme="dark"] .radio-option{border:1px solid #27354f;background:#111a2c}
+:root[data-theme="dark"] .form-note{border:1px solid #27407a;background:#0f1829}
+:root[data-theme="dark"] .btn-secondary{background:#111a2c}
+:root[data-theme="dark"] .pick select{border:1px solid #324463;background:#111a2c}
+:root[data-theme="dark"] .sum{border-top:1px solid #27354f}
+:root[data-theme="dark"] .cell textarea,:root[data-theme="dark"] .cell input{border:1px solid #324463;background:#111a2c}
+:root[data-theme="dark"] .empty{border:2px dashed #324463}
+:root[data-theme="dark"] .form-actions button,:root[data-theme="dark"] .form-submit button{border:1px solid #2a3957;background:#111a2c;color:#cbd5e8}
+:root[data-theme="dark"] .form-panel{border:1px solid #222f48}
+:root[data-theme="dark"] .form-field{color:#cbd5e8}
+:root[data-theme="dark"] .form-field input,:root[data-theme="dark"] .form-field select,:root[data-theme="dark"] .form-field textarea{border:1px solid #2a3957;background:#111a2c;color:#e8eefc}
+:root[data-theme="dark"] .choice{border:1px solid #2a3957;background:#111a2c;color:#cbd5e8}
+:root[data-theme="dark"] .choice input{accent-color:#7da4ff}
+:root[data-theme="dark"] .consent{color:#cbd5e8}
+:root[data-theme="dark"] .consent input{accent-color:#7da4ff}
+:root[data-theme="dark"] .form-status{background:#10301f;color:#86efac}
+:root[data-theme="dark"] .rc-tools input,:root[data-theme="dark"] .rc-tools select{border:1px solid #2a3957;background:#111a2c}
+:root[data-theme="dark"] .rc-item{background:#111a2c}
+:root[data-theme="dark"] .bedchip{background:#271b45;color:#b79cff}
+:root[data-theme="dark"] .rp-btns a,:root[data-theme="dark"] .rp-btns button{border:1px solid #2a3957;background:#111a2c;color:#cbd5e8}
+:root[data-theme="dark"] .nk-kv>div{background:#111a2c}
+:root[data-theme="dark"] .rp-tl li:before{background:#111a2c}
+:root[data-theme="dark"] .rp-card{background:#111a2c}
+:root[data-theme="dark"] .rp-none{border:1px dashed #2a3957;background:#0f1829}
+:root[data-theme="dark"] body{background:#111a2c!important}
+:root[data-theme="dark"] .ticket{border:2px dashed #3a4a68;background:#111a2c}
+:root[data-theme="dark"] .ticket .tk-side{border-left:2px dashed #2a3957}
+:root[data-theme="dark"] .ticket .tk-side button,:root[data-theme="dark"] .ticket .tk-side a{border:1px solid #2a3957;background:#111a2c;color:#cbd5e8}
+:root[data-theme="dark"] .ticket-msg{color:#86efac;background:#10301f}
+:root[data-theme="dark"] .ticket .tk-side{border-top:2px dashed #2a3957}
+:root[data-theme="dark"] .tk-a{background:#271b45;color:#b79cff}
+:root[data-theme="dark"] select.tk-sel.tk-a{background:#271b45;color:#b79cff}
+:root[data-theme="dark"] .nke-btn{border:1px solid #2a3957;background:#111a2c}
+:root[data-theme="dark"] .nke{background:#111a2c}
+:root[data-theme="dark"] .nke-f label{color:#cbd5e8}
+:root[data-theme="dark"] .nke-f input,:root[data-theme="dark"] .nke-f select,:root[data-theme="dark"] .nke-f textarea{border:1px solid #2a3957;background:#111a2c}
+:root[data-theme="dark"] .nke-audit{border:1px solid #27407a}
+:root[data-theme="dark"] .nke-err{color:#ff8a8f}
+:root[data-theme="dark"] .nke footer button{border:1px solid #2a3957;background:#111a2c;color:#cbd5e8}
+
+/* primary / active states must stay blue (re-asserted after the generated overrides) */
+:root[data-theme="dark"] .pill.on,:root[data-theme="dark"] .form-actions .primary,:root[data-theme="dark"] .form-submit .primary,:root[data-theme="dark"] .form-actions .btn-primary,:root[data-theme="dark"] .btn-primary,:root[data-theme="dark"] .mf .b1,:root[data-theme="dark"] .rb,:root[data-theme="dark"] .nke footer .nke-save{background:#2563eb;border-color:#2563eb;color:#fff}
+:root[data-theme="dark"] .pill[data-f=c]{background:#3a1618;border-color:#6b2a2e;color:#ff6b70}
